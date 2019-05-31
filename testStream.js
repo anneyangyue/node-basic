@@ -32,8 +32,8 @@ var fs = require('fs')
 // })
 
 // 输入流和输出流
-var s1 = fs.createReadStream('./3.txt')
-var s2 = fs.createWriteStream('./5.txt')
+// var s1 = fs.createReadStream('./3.txt')
+// var s2 = fs.createWriteStream('./5.txt')
 
 // s1.on('data', function (data) {
 //   s2.write(data)
@@ -45,5 +45,14 @@ var s2 = fs.createWriteStream('./5.txt')
 // })
 
 // 管道 pipe
-s1.pipe(s2)
+// s1.pipe(s2)
+
+// pipe 压缩文件
+var zlib = require('zlib')
+
+var s1 = fs.createReadStream('./3.txt')
+var s2 = fs.createWriteStream('./6.txt.zip')
+
+s1.pipe(zlib.createGzip()).pipe(s2)
+
 
