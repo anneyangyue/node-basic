@@ -11,7 +11,7 @@ function delDir (path) {
       delDir(childPath)
     }
   })
-  // fs.rmdirSync(path)
+  fs.rmdirSync(path)
 }
 
 delDir('./data')
